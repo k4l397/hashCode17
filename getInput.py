@@ -1,6 +1,6 @@
 import sys
 from video import Video
-from endpoint import Endpoint
+from endpoints import Endpoint
 from cache import Cache
 
 if (len(sys.argv) < 2):
@@ -40,15 +40,15 @@ while (i < noOfEndpoints):
         cacheId = int(cacheData[0])
         cacheLatency = int(cacheData[1])
         if caches.has_key(cacheId):
-            caches[cacheId.latency[endpoint.id] = int(cacheLatency)
-            caches[cacheId.endpoints[endpoint.id] = endpoint
+            caches[cacheId].latency[endpoint.id] = cacheLatency
+            caches[cacheId].endpoints[endpoint.id] = endpoint
         else:
             cache = Cache(cacheId)
-            cache.latency[endpoint.id] = int(cacheLatency)
+            cache.latency[endpoint.id] = cacheLatency
             cache.endpoints[endpoint.id] = endpoint
-            caches[cacheId = cache
+            caches[cacheId] = cache
     endpoints.append(endpoint)
-    i++
+    i += 1
 
 for line in f:
     if len(line.split(" ")) == 3:
