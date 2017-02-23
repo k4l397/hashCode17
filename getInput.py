@@ -20,9 +20,13 @@ print 'Number of videos %d' % noOfVideos
 print 'Number of endpoints %d' % noOfEndpoints
 print 'Number of requests %d' % noOfRequestDescriptors
 print 'Number of cache servers %d' % noOfCacheServers
-print 'capacity of servers %d' % capacity 
+print 'capacity of servers %d' % capacity
 
 videos = []
 sizes = file.readline().strip().split(' ')
 for x in range(0, noOfVideos):
     videos.append(Video(x, int(sizes[x])))
+
+def sortVideos():
+    return sorted(videos, key = lambda x: x.totalRequests, reverse=True)
+    
