@@ -22,7 +22,7 @@ def fillCacheServer(cache, videos, endpoints):
     for e in endpoints:
         for v in e.videos:
             for c in e.caches:
-                i = v.requests[e.id]
+                i = v.requests[e.id in item for item in v.requests]
                 if (c.currentCapacity + v.size) <= c.capacity:
                     c.addVideo(v)
 
