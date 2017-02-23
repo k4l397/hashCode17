@@ -1,6 +1,14 @@
+import sys
 from video import Video
 
-file = open('me_at_the_zoo.in', 'r')
+if (len(sys.argv) < 2):
+    print 'Require filename to use as command line argument'
+    print 'eg: python getInput.py \'kittens.in\''
+    sys.exit(1)
+else:
+    filename = sys.argv[1]
+
+file = open(filename, 'r')
 metadata = file.readline().strip()
 metadata = metadata.split(' ')
 noOfVideos = int(metadata[0])
@@ -25,6 +33,6 @@ for line in f:
     if len(line.split(" ")) == 3:
         data = [int(x) for x in line.split(" ")]
         videos[data[0]].setRequests(data[2], data[1])
-
-# print (videos[1].requests)
-# print (videos[1].totalRequests)
+f.close
+print (videos[1].requests)
+print (videos[1].totalRequests)
