@@ -8,8 +8,8 @@ if (len(sys.argv) < 2):
 else:
     filename = sys.argv[1]
 
-file = open(filename, 'r')
-metadata = file.readline().strip()
+f = open(filename, 'r')
+metadata = f.readline().strip()
 metadata = metadata.split(' ')
 noOfVideos = int(metadata[0])
 noOfEndpoints = int(metadata[1])
@@ -23,10 +23,18 @@ print 'Number of cache servers %d' % noOfCacheServers
 print 'capacity of servers %d' % capacity
 
 videos = []
-sizes = file.readline().strip().split(' ')
+sizes = f.readline().strip().split(' ')
 for x in range(0, noOfVideos):
     videos.append(Video(x, int(sizes[x])))
 
-def sortVideos():
+for line in f:
+    if len(line.split(" ")) == 3:
+        data = [int(x) for x in line.split(" ")]
+        videos[data[0]].setRequests(data[2], data[1])
+f.close()
+
+print (videos[1].requests)
+print (videos[1].totalRequests)
+
+def sortVideos(videos):
     return sorted(videos, key = lambda x: x.totalRequests, reverse=True)
-    
