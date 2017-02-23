@@ -40,13 +40,13 @@ while (i < noOfEndpoints):
         cacheId = int(cacheData[0])
         cacheLatency = int(cacheData[1])
         if caches.has_key(cacheId):
-            caches[cacheId].latency[endpoint.id] = cacheLatency
-            caches[cacheId].endpoints[endpoint.id] = endpoint
+            cache = caches[cacheId]
         else:
             cache = Cache(cacheId)
-            cache.latency[endpoint.id] = cacheLatency
-            cache.endpoints[endpoint.id] = endpoint
-            caches[cacheId] = cache
+        cache.latency[endpoint.id] = cacheLatency
+        cache.endpoints[endpoint.id] = endpoint
+        endpoint.caches[cacheId] = cache
+        endpoint.latency[cacheId] = cacheLatency
     endpoints.append(endpoint)
     i += 1
 
