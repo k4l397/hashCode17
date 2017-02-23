@@ -1,6 +1,16 @@
 from cache import Cache
 from endpoints import Endpoint
 from video import Video
+from getInput import getInput
+
+if (len(sys.argv) < 2):
+    print 'Require filename to use as command line argument'
+    print 'eg: python getInput.py \'kittens.in\''
+    sys.exit(1)
+else:
+    filename = sys.argv[1]
+
+getInput(filename)
 
 def fillCacheServer(cache):
 
