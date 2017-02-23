@@ -34,15 +34,19 @@ for x in range(0, noOfVideos):
 i = 0
 while (i < noOfEndpoints):
     endpointData = f.readline().strip().split(" ")
-    endpoint = Endpoint(i, endpointData[0])
-    for x in range(0, endpointData[1]):
+    endpoint = Endpoint(i, int(endpointData[0]))
+    for x in range(0, int(endpointData[1])):
         cacheData = f.readline().strip().split(" ")
-        if caches.has_key(cacheData[0]):
-            caches[cacheData[0]].endpoints[endpoint] = cacheData[1]
+        cacheId = int(cacheData[0])
+        cacheLatency = int(cacheData[1])
+        if caches.has_key(cacheId):
+            caches[cacheId.latency[endpoint.id] = int(cacheLatency)
+            caches[cacheId.endpoints[endpoint.id] = endpoint
         else:
-            cache = Cache(cacheData[0])
-            caches[cacheData[0]] = cache
-            cache.endpoints[endpoint] = cacheData[1]
+            cache = Cache(cacheId)
+            cache.latency[endpoint.id] = int(cacheLatency)
+            cache.endpoints[endpoint.id] = endpoint
+            caches[cacheId = cache
     endpoints.append(endpoint)
     i++
 
