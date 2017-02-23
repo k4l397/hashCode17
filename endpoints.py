@@ -7,4 +7,3 @@ class Endpoint:
         self.latency = {}
         self.caches = {}
         self.videos = {}
-        

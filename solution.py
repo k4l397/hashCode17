@@ -12,12 +12,24 @@ else:
 
 getInput(filename)
 
-def fillCacheServer(cache, videos):
-    sortedVids = sortVideos(videos)
-    cacheSize
-    for video in sortVideos:
-        if (cacheSize + video.size) <= Cache.Capacity:
-            cache.videos.append(video)    
+def fillCacheServer(cache, videos, endpoints):
+    # sortedVids = sortVideos(videos)
+    # cacheSize
+    # for video in sortVideos:
+    #     if (cacheSize + video.size) <= Cache.Capacity:
+    #         cache.videos.append(video)
+
+    for e in endpoints:
+        for v in e.videos:
+            for c in e.caches:
+                i = v.requests[e.id]
+                if (c.currentCapacity + v.size) <= c.capacity:
+                    c.addVideo(v)
+
+
+
+
+
 
 def solution(numberOfCacheServers, listOfaList):
     f = open("output.out", 'r')
