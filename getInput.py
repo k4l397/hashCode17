@@ -47,6 +47,7 @@ def getInput(filename):
         if len(line.split(" ")) == 3:
             data = [int(x) for x in line.split(" ")]
             Video.Videos[data[0]].setRequests(data[2], data[1])
+            Endpoint.Endpoints[data[1]].videos[data[0]] = data[2]
     f.close()
 
 def sortVideos(videos):

@@ -6,4 +6,5 @@ class Endpoint:
         self.datacenterLatency = latency
         self.latency = {}
         self.caches = {}
+        self.videos = {}
         
