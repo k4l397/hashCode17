@@ -43,6 +43,8 @@ while (i < noOfEndpoints):
             cache = Cache(cacheData[0])
             caches[cacheData[0]] = cache
             cache.endpoints[endpoint] = cacheData[1]
+    endpoints.append(endpoint)
+    i++
 
 for line in f:
     if len(line.split(" ")) == 3:
