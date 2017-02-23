@@ -1,6 +1,14 @@
+import sys
 from video import Video
 
-file = open('kittens.in', 'r')
+if (len(sys.argv) < 2):
+    print 'Require filename to use as command line argument'
+    print 'eg: python getInput.py \'kittens.in\''
+    sys.exit(1)
+else:
+    filename = sys.argv[1]
+
+file = open(filename, 'r')
 metadata = file.readline().strip()
 metadata = metadata.split(' ')
 noOfVideos = int(metadata[0])
