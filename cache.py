@@ -6,4 +6,5 @@ class Cache:
         self.id = id
         self.latency = {}
         self.endpoints = {}
+        self.videos = []
         
