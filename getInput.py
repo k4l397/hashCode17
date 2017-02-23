@@ -1,5 +1,7 @@
 import sys
 from video import Video
+from endpoint import Endpoint
+from cache import Cache
 
 if (len(sys.argv) < 2):
     print 'Require filename to use as command line argument'
@@ -23,9 +25,24 @@ print 'Number of cache servers %d' % noOfCacheServers
 print 'capacity of servers %d' % capacity
 
 videos = []
+endpoints = []
+caches = {}
 sizes = f.readline().strip().split(' ')
 for x in range(0, noOfVideos):
     videos.append(Video(x, int(sizes[x])))
+
+i = 0
+while (i < noOfEndpoints):
+    endpointData = f.readline().strip().split(" ")
+    endpoint = Endpoint(i, endpointData[0])
+    for x in range(0, endpointData[1]):
+        cacheData = f.readline().strip().split(" ")
+        if caches.has_key(cacheData[0]):
+            caches[cacheData[0]].endpoints[endpoint] = cacheData[1]
+        else:
+            cache = Cache(cacheData[0])
+            caches[cacheData[0]] = cache
+            cache.endpoints[endpoint] = cacheData[1]
 
 for line in f:
     if len(line.split(" ")) == 3:
